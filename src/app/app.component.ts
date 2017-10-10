@@ -1,18 +1,10 @@
 import { Component } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
-  template: `
-	  <object class="red" type="image/svg+xml" [data]="cleanUrl('/assets/star.svg')"></object>
-    <object class="yellow" type="image/svg+xml" [data]="cleanUrl('/assets/star.svg')"></object>`,
-  styles: [`.red > svg {stroke: red} 
-  .yellow svg {stroke: yellow}`]
+  template: `<button [inlineSVG]="'/assets/star.svg'">Button with image</button>`,
+  styles: [``]
 })
 export class AppComponent {
-	constructor(private _sanitizer: DomSanitizer) {}
-
-	cleanUrl(url) {
-		return this._sanitizer.bypassSecurityTrustResourceUrl(url)
-	}
+	constructor() {}
 }
